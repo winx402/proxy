@@ -1,4 +1,4 @@
-package com.winx.crawler;
+package com.winx.crawler.target;
 
 import com.winx.model.Proxy;
 

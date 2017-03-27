@@ -13,7 +13,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.8</junit.version>
         <slf4j.version>1.7.5</slf4j.version>
         <logback.version>1.0.13</logback.version>
         <guava.version>18.0</guava.version>
@@ -25,6 +25,8 @@
         <crawler.version>4.2</crawler.version>
         <dom4j.version>1.6.1</dom4j.version>
         <fastjson.version>1.1.31</fastjson.version>
+        <servlet.version>2.5</servlet.version>
+        <joda.time.version>2.8.2</joda.time.version>
     </properties>
 
     <dependencyManagement>
@@ -154,6 +156,18 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -257,6 +271,13 @@
             <artifactId>druid</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -278,12 +299,23 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
             <id>dev</id>
             <properties>
                 <deploy.type>dev</deploy.type>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <deploy.type>test</deploy.type>
             </properties>
         </profile>
         <profile>

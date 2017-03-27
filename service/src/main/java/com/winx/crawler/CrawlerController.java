@@ -1,6 +1,9 @@
 package com.winx.crawler;
 
-import com.google.common.collect.Lists;
+import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
+import com.winx.crawler.target.TargetGetterManage;
+import com.winx.crawler.target.XmlTargetWebParser;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -10,10 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Queue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.List;
 
 /**
  * @author wangwenxiang
@@ -28,31 +30,28 @@ public class CrawlerController {
     @Resource
     private XmlTargetWebParser xmlTargetWebParser;
 
-    private Queue<TargetWebGetter> targetWebs;
-
-    private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+    @Resource
+    private TargetGetterManage targetGetterManage;
 
     private static final int numberOfCrawlers = 5;
 
-    private static CrawlController controller;
+    private static CrawlerFactory crawlerFactory;
 
-    private static ThreadLocal<TargetWebGetter> webGetterThreadLocal = new ThreadLocal<TargetWebGetter>();
-
-    public static TargetWebGetter getTargetWenGetter() {
-        return webGetterThreadLocal.get();
-    }
+    private volatile boolean initialized = false;
 
     /**
-     * 初始化
+     * init
      */
-    private void init() {
+    @PostConstruct
+    public void init() {
         logger.info("init CrawlerController");
-        targetWebs = Lists.newLinkedList();
         try {
-            xmlTargetWebParser.initTargetWeb(targetWebs);
-            initCraw();
+            xmlTargetWebParser.initTargetWeb(targetGetterManage.getTargetWebs());
+            crawlerFactory = new CrawlerFactory();
+            initialized = true;
         } catch (Exception e) {
             logger.error("init CrawlerController error", e);
+            initialized = false;
         }
 
     }
@@ -62,30 +61,39 @@ public class CrawlerController {
      * 通过ThreadLocal传递TargetWebGetter
      */
     public void doCrawling() {
-        for (final TargetWebGetter targetWebGetter : targetWebs) {
-            singleThreadExecutor.submit(new Runnable() {
-                public void run() {
-                    try {
-                        for (String entrance : targetWebGetter.entrances()) {
-                            controller.addSeed(entrance);
-                        }
-                        webGetterThreadLocal.set(targetWebGetter);
-                        controller.start(TestCrawler.class, numberOfCrawlers);
-                    } catch (Exception e) {
-                        logger.error("run crawler error", e);
-                    }finally {
-                        webGetterThreadLocal.remove();
-                    }
-                }
-            });
+        if (!initialized){
+            logger.info("CrawlerController not initialized");
+            return;
+        }
+        if (targetGetterManage == null) {
+            logger.error("targetGetterManage is null");
+            return;
+        }
+        List<String> entrances = targetGetterManage.getEntrance();
+        try {
+            CrawlController controller = crawlerFactory.newCrawlController();
+            for (String entrance : entrances) {
+                controller.addSeed(entrance);
+            }
+            controller.start(Crawler.class, numberOfCrawlers);
+        } catch (Exception e) {
+            logger.error("run crawler error, entrances : {}", JSON.toJSONString(entrances), e);
         }
     }
 
-    private void initCraw() throws Exception {
-        CrawlConfig config = new CrawlConfig();
-        PageFetcher pageFetcher = new PageFetcher(config);
-        RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
-        RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-        controller = new CrawlController(config, pageFetcher, robotstxtServer);
+    public class CrawlerFactory {
+        private final CrawlConfig config = new CrawlConfig();
+        private final PageFetcher pageFetcher = new PageFetcher(config);
+        private final RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
+        private static final String crawlStorageFolder = "data/crawl/root";
+        private final RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
+
+        CrawlerFactory() {
+            config.setCrawlStorageFolder(crawlStorageFolder);
+        }
+
+        private CrawlController newCrawlController() throws Exception {
+            return new CrawlController(config, pageFetcher, robotstxtServer);
+        }
     }
 }

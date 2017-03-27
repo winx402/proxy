@@ -5,7 +5,9 @@ package com.winx.enums;
  * @create 2017-03-26.
  */
 public enum ExceptionEnum {
-    PROCESS_HTML_IP_EXCEPTION("html解析ip错误");
+    PROCESS_HTML_IP_EXCEPTION("html解析ip错误"),
+    NOT_FIND_IP_PATTERN("没有找到ip解析器"),
+    NOT_FIND_PORT_PATTERN("没有找到port解析器");
 
     private String decs;
 

@@ -1,19 +1,20 @@
-package com.winx.crawler.template;
+package com.winx.crawler.target;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.io.LineProcessor;
-import com.winx.crawler.TargetWebGetter;
 import com.winx.enums.ExceptionEnum;
-import com.winx.enums.ProxyAvailable;
 import com.winx.enums.ProxyType;
+import com.winx.enums.ProxyAvailable;
 import com.winx.exception.ProcessException;
 import com.winx.model.Proxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +28,13 @@ public class TableXmlTarget implements TargetWebGetter{
 
     private static final Pattern trPattern = Pattern.compile("<tr.*?</tr>");
 
+    private static final Map<String, Pattern> ipPatternMap = new HashMap<String, Pattern>(){{
+        put("tableIp",Pattern.compile("<td>(\\d+\\.\\d+\\.\\d+\\.\\d+)</td>"));
+    }};
+
+    private static final Map<String, Pattern> portPatternMap = new HashMap<String, Pattern>(){{
+        put("tablePort", Pattern.compile(""));
+    }};
     /**
      * 入口
      */
@@ -41,7 +49,7 @@ public class TableXmlTarget implements TargetWebGetter{
     }
 
     /**
-     * ip页面正则
+     * 访问页面正则
      */
     private Pattern shouldVisitPattern;
 
@@ -54,8 +62,11 @@ public class TableXmlTarget implements TargetWebGetter{
      */
     private Pattern ipPattern;
 
-    public void setIpPattern(String ipPattern){
-        this.ipPattern = Pattern.compile(ipPattern);
+    public void setIpPattern(String ipType) throws ProcessException{
+        this.ipPattern = ipPatternMap.get(ipType);
+        if (this.ipPattern == null){
+            throw new ProcessException(ExceptionEnum.NOT_FIND_IP_PATTERN);
+        }
     }
 
     /**
@@ -63,8 +74,11 @@ public class TableXmlTarget implements TargetWebGetter{
      */
     private Pattern portPattern;
 
-    public void setPortPattern(String portPattern){
-        this.portPattern = Pattern.compile(portPattern);
+    public void setPortPattern(String portType) throws ProcessException{
+        this.portPattern = portPatternMap.get(portType);
+        if (this.portPattern == null){
+            throw new ProcessException(ExceptionEnum.NOT_FIND_PORT_PATTERN);
+        }
     }
 
     public List<String> entrances() {
@@ -87,7 +101,7 @@ public class TableXmlTarget implements TargetWebGetter{
     private String getIp(String trHtml) throws ProcessException{
         Matcher matcher = ipPattern.matcher(trHtml);
         if (matcher.find()){
-            return matcher.group();
+            return matcher.group(1);
         }
         throw new ProcessException(ExceptionEnum.PROCESS_HTML_IP_EXCEPTION);
     }
@@ -120,8 +134,8 @@ public class TableXmlTarget implements TargetWebGetter{
                 try{
                     proxy.setIp(getIp(line));
                     proxy.setPort(getPort(line));
-                    proxy.setProxyType(ProxyType.INITIAL);
-                    proxy.setAvailable(ProxyAvailable.HTTP);
+                    proxy.setProxyType(ProxyType.HTTP);
+                    proxy.setAvailable(ProxyAvailable.INITIAL);
                     proxies.add(proxy);
                 }catch (Exception e){
                     logger.error("TableXmlTarget process html error",e);

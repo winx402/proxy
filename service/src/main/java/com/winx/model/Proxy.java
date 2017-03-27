@@ -1,18 +1,20 @@
 package com.winx.model;
 
-import com.winx.enums.ProxyAvailable;
 import com.winx.enums.ProxyType;
+import com.winx.enums.ProxyAvailable;
+
+import java.io.Serializable;
 
 /**
  * @author wangwenxiang
  * @create 2017-03-25.
  * 代理ip
  */
-public class Proxy {
+public class Proxy implements Serializable{
     private String ip;
     private int port;
-    private ProxyType proxyType;
     private ProxyAvailable available;
+    private ProxyType proxyType;
     private int score;
 
     public String getIp() {
@@ -31,20 +33,20 @@ public class Proxy {
         this.port = port;
     }
 
-    public ProxyType getProxyType() {
-        return proxyType;
-    }
-
-    public void setProxyType(ProxyType proxyType) {
-        this.proxyType = proxyType;
-    }
-
     public ProxyAvailable getAvailable() {
         return available;
     }
 
     public void setAvailable(ProxyAvailable available) {
         this.available = available;
+    }
+
+    public ProxyType getProxyType() {
+        return proxyType;
+    }
+
+    public void setProxyType(ProxyType proxyType) {
+        this.proxyType = proxyType;
     }
 
     public int getScore() {
