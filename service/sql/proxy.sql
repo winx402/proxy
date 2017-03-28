@@ -7,6 +7,6 @@ CREATE TABLE `proxy_ip` (
   `score` TINYINT(3) NOT NULL DEFAULT '0' COMMENT '分数',
   `create_time` DATE NOT NULL DEFAULT '2000-01-01' COMMENT '创建时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uniq_ip_port` (`ip`,`port`),
+  UNIQUE KEY `uniq_ip_port_type` (`ip`,`port`,`proxy_type`),
   KEY `idx_available_score` (`available`, `score`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COMMENT='代理ip';

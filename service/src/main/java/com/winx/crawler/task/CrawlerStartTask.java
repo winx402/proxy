@@ -21,7 +21,7 @@ public class CrawlerStartTask {
     @Resource
     private CrawlerController crawlerController;
 
-    @Scheduled(cron = "0 52 23 * * ?")
+    @Scheduled(cron = "0 40 17 * * ?")
     public void startCrawling() {
         logger.info("start to do crawler");
         long l = System.currentTimeMillis();

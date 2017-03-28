@@ -16,5 +16,7 @@
         <foreach collection="proxys" item="proxy" separator=",">
             (#{proxy.ip},#{proxy.port},#{proxy.available,typeHandler=com.winx.typehandler.ProxyAvailableHandler},#{proxy.proxyType, typeHandler=com.winx.typehandler.ProxyTypeHandler},#{proxy.score},#{proxy.createTime})
         </foreach>
+        ON DUPLICATE KEY UPDATE
+        ip = VALUES(ip)
     </insert>
 </mapper>

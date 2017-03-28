@@ -33,6 +33,7 @@ public class XmlTargetWebParser {
         add(new ShouldVisitReader());
         add(new IpReader());
         add(new PortReader());
+        add(new TypeReader());
     }};
 
     @Value("${handmapper.path}")
@@ -67,7 +68,7 @@ public class XmlTargetWebParser {
         }
     }
 
-    private TableXmlTarget parsing(Element element) throws ProcessException {
+    private TableXmlTarget parsing(Element element) throws Exception {
         TableXmlTarget tableXmlTarget = new TableXmlTarget();
         for (ElementReader<Element, TableXmlTarget> elementReader : readers) {
             boolean readSuccess = elementReader.read(element, tableXmlTarget);
@@ -123,11 +124,11 @@ public class XmlTargetWebParser {
     private class IpReader implements ElementReader<Element, TableXmlTarget> {
         private static final String IP = "ip";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws ProcessException {
+        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
             if (element == null) return false;
             String s = element.elementText(IP);
             if (Strings.isNullOrEmpty(s)) return false;
-            tableXmlTarget.setIpPattern(s);
+            tableXmlTarget.getAttributeFacade().setIpProcesser(s);
             return true;
         }
 
@@ -142,16 +143,31 @@ public class XmlTargetWebParser {
     private class PortReader implements ElementReader<Element, TableXmlTarget> {
         private static final String PORT = "port";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws ProcessException {
-            if (element == null) return false;
+        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
+            if (element == null) return true;
             String s = element.elementText(PORT);
-            if (Strings.isNullOrEmpty(s)) return false;
-            tableXmlTarget.setPortPattern(s);
+            tableXmlTarget.getAttributeFacade().setPortProcesser(s);
             return true;
         }
 
         public String getInfo() {
             return "port解析";
+        }
+    }
+
+    private class TypeReader implements ElementReader<Element, TableXmlTarget> {
+
+        private static final String TYPE = "type";
+
+        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
+            if (element == null) return true;
+            String s = element.elementText(TYPE);
+            tableXmlTarget.getAttributeFacade().setTypeProcesser(s);
+            return true;
+        }
+
+        public String getInfo() {
+            return "type解析";
         }
     }
 }

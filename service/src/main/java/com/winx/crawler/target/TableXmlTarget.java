@@ -3,6 +3,8 @@ package com.winx.crawler.target;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.io.LineProcessor;
+import com.winx.crawler.target.attrable.AttributeFacade;
+import com.winx.crawler.target.attrable.AttributeProcesser;
 import com.winx.enums.ExceptionEnum;
 import com.winx.enums.ProxyType;
 import com.winx.enums.ProxyAvailable;
@@ -29,13 +31,12 @@ public class TableXmlTarget implements TargetWebGetter{
 
     private static final Pattern trPattern = Pattern.compile("<tr.*?</tr>");
 
-    private static final Map<String, Pattern> ipPatternMap = new HashMap<String, Pattern>(){{
-        put("tableIp",Pattern.compile("<td>(\\d+\\.\\d+\\.\\d+\\.\\d+)</td>"));
-    }};
+    private AttributeFacade attributeFacade = new AttributeFacade();
 
-    private static final Map<String, Pattern> portPatternMap = new HashMap<String, Pattern>(){{
-        put("tablePort", Pattern.compile("<td>([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-5]{2}[0-3][0-5])</td>"));
-    }};
+    public AttributeFacade getAttributeFacade() {
+        return attributeFacade;
+    }
+
     /**
      * 入口
      */
@@ -58,30 +59,6 @@ public class TableXmlTarget implements TargetWebGetter{
         this.shouldVisitPattern = Pattern.compile(shouldVisitPattern);
     }
 
-    /**
-     * ip解析
-     */
-    private Pattern ipPattern;
-
-    public void setIpPattern(String ipType) throws ProcessException{
-        this.ipPattern = ipPatternMap.get(ipType);
-        if (this.ipPattern == null){
-            throw new ProcessException(ExceptionEnum.NOT_FIND_IP_PATTERN);
-        }
-    }
-
-    /**
-     * 端口解析
-     */
-    private Pattern portPattern;
-
-    public void setPortPattern(String portType) throws ProcessException{
-        this.portPattern = portPatternMap.get(portType);
-        if (this.portPattern == null){
-            throw new ProcessException(ExceptionEnum.NOT_FIND_PORT_PATTERN);
-        }
-    }
-
     public List<String> entrances() {
         return entrances;
     }
@@ -100,27 +77,21 @@ public class TableXmlTarget implements TargetWebGetter{
      * ip获取失败时抛出异常
      */
     private String getIp(String trHtml) throws ProcessException{
-        Matcher matcher = ipPattern.matcher(trHtml);
-        if (matcher.find()){
-            return matcher.group(1);
-        }
-        throw new ProcessException(ExceptionEnum.PROCESS_HTML_IP_EXCEPTION);
+        return attributeFacade.getIp(trHtml);
     }
 
     /**
      * 正则获取端口
      */
     private int getPort(String trHtml){
-        try{
-            Matcher matcher = portPattern.matcher(trHtml);
-            if (matcher.find()){
-                return Integer.parseInt(matcher.group(1));
-            }
-        }catch (Exception e){
-            logger.error("TableXmlTarget process port error",e);
-            return -1;
-        }
-        return -1;
+        return attributeFacade.getPort(trHtml);
+    }
+
+    /**
+     * 获取代理类型
+     */
+    private ProxyType getType(String trHtml){
+        return attributeFacade.getType(trHtml);
     }
 
 
@@ -135,12 +106,12 @@ public class TableXmlTarget implements TargetWebGetter{
                 try{
                     proxy.setIp(getIp(line));
                     proxy.setPort(getPort(line));
-                    proxy.setProxyType(ProxyType.HTTP);
+                    proxy.setProxyType(getType(line));
                     proxy.setAvailable(ProxyAvailable.INITIAL);
                     proxy.setCreateTime(new DateTime().toString("yyyy-MM-dd"));
                     proxies.add(proxy);
                 }catch (Exception e){
-                    logger.error("TableXmlTarget process html error",e);
+                    logger.error("TableXmlTarget process html error, html : {}",line);
                     return false;
                 }
                 return true;
@@ -161,7 +132,7 @@ public class TableXmlTarget implements TargetWebGetter{
                     lineProcessor.processLine(matcher.group());
                 }
             }catch (Exception e){
-                logger.error("html to proxy parse error",e);
+                logger.error("html to proxy parse error,html:{},message:{}",html,e.getMessage());
             }
             return lineProcessor.getResult();
         }

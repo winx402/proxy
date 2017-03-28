@@ -3,8 +3,9 @@
     <target>
         <website>http://www.xicidaili.com</website>
         <entrance>http://www.xicidaili.com/nn/1</entrance>
-        <shouldvisit>^http://www.xicidaili.com/nn/1$</shouldvisit>
-        <ip>tableIp</ip>
-        <port>tablePort</port>
+        <shouldvisit>^http://www.xicidaili.com/nn/\d{1,}$</shouldvisit>
+        <ip>tableIpPattern</ip>
+        <port>tablePortPattern</port>
+        <type>tableTypePattern</type>
     </target>
 </mapers>
