@@ -7,7 +7,8 @@ import com.winx.enums.ExceptionEnum;
 import com.winx.enums.ProxyType;
 import com.winx.enums.ProxyAvailable;
 import com.winx.exception.ProcessException;
-import com.winx.model.Proxy;
+import com.winx.model.ProxyIp;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ public class TableXmlTarget implements TargetWebGetter{
     }};
 
     private static final Map<String, Pattern> portPatternMap = new HashMap<String, Pattern>(){{
-        put("tablePort", Pattern.compile(""));
+        put("tablePort", Pattern.compile("<td>([0-9]|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-5]{2}[0-3][0-5])</td>"));
     }};
     /**
      * 入口
@@ -89,7 +90,7 @@ public class TableXmlTarget implements TargetWebGetter{
         return shouldVisitPattern.matcher(url).matches();
     }
 
-    public List<Proxy> FromPage(String pageHtml) {
+    public List<ProxyIp> FromPage(String pageHtml) {
         if (Strings.isNullOrEmpty(pageHtml)) return Lists.newArrayList();
         return getTr(pageHtml);
     }
@@ -113,7 +114,7 @@ public class TableXmlTarget implements TargetWebGetter{
         try{
             Matcher matcher = portPattern.matcher(trHtml);
             if (matcher.find()){
-                return Integer.parseInt(matcher.group());
+                return Integer.parseInt(matcher.group(1));
             }
         }catch (Exception e){
             logger.error("TableXmlTarget process port error",e);
@@ -123,19 +124,20 @@ public class TableXmlTarget implements TargetWebGetter{
     }
 
 
-    private List<Proxy> getTr(final String pageHtml){
-        return HtmlProcessor.html2List(pageHtml, new LineProcessor<List<Proxy>>() {
+    private List<ProxyIp> getTr(final String pageHtml){
+        return HtmlProcessor.html2List(pageHtml, new LineProcessor<List<ProxyIp>>() {
 
-            List<Proxy> proxies = Lists.newArrayList();
+            List<ProxyIp> proxies = Lists.newArrayList();
 
             public boolean processLine(String line) throws IOException {
                 logger.info("TableXmlTarget process html get tr:{}",line);
-                Proxy proxy = new Proxy();
+                ProxyIp proxy = new ProxyIp();
                 try{
                     proxy.setIp(getIp(line));
                     proxy.setPort(getPort(line));
                     proxy.setProxyType(ProxyType.HTTP);
                     proxy.setAvailable(ProxyAvailable.INITIAL);
+                    proxy.setCreateTime(new DateTime().toString("yyyy-MM-dd"));
                     proxies.add(proxy);
                 }catch (Exception e){
                     logger.error("TableXmlTarget process html error",e);
@@ -144,7 +146,7 @@ public class TableXmlTarget implements TargetWebGetter{
                 return true;
             }
 
-            public List<Proxy> getResult() {
+            public List<ProxyIp> getResult() {
                 return proxies;
             }
         });

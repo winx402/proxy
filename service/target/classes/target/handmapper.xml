@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapers>
     <target>
-        <entrance>www.baidu.com</entrance>
-        <shouldvisit>www.baidu.com/nn</shouldvisit>
-        <ip>table</ip>
-        <port>8080</port>
+        <website>http://www.xicidaili.com</website>
+        <entrance>http://www.xicidaili.com/nn/1</entrance>
+        <shouldvisit>^http://www.xicidaili.com/nn/1$</shouldvisit>
+        <ip>tableIp</ip>
+        <port>tablePort</port>
     </target>
 </mapers>

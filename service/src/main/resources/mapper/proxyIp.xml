@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winx.dao.ProxyIpDao">
+
+    <resultMap id="proxyIp" type="ProxyIp">
+        <result property="ip" column="ip"/>
+        <result property="port" column="port"/>
+        <result property="available" column="available" typeHandler="com.winx.typehandler.ProxyAvailableHandler"/>
+        <result property="proxyType" column="proxy_type" typeHandler="com.winx.typehandler.ProxyTypeHandler"/>
+        <result property="score" column="score"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO proxy_ip (ip,port,available,proxy_type,score,create_time) VALUES
+        <foreach collection="proxys" item="proxy" separator=",">
+            (#{proxy.ip},#{proxy.port},#{proxy.available,typeHandler=com.winx.typehandler.ProxyAvailableHandler},#{proxy.proxyType, typeHandler=com.winx.typehandler.ProxyTypeHandler},#{proxy.score},#{proxy.createTime})
+        </foreach>
+    </insert>
+</mapper>

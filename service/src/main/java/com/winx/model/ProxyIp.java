@@ -10,12 +10,21 @@ import java.io.Serializable;
  * @create 2017-03-25.
  * 代理ip
  */
-public class Proxy implements Serializable{
+public class ProxyIp implements Serializable{
     private String ip;
     private int port;
     private ProxyAvailable available;
     private ProxyType proxyType;
     private int score;
+    private String createTime;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public String getIp() {
         return ip;

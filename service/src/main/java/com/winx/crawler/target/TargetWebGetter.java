@@ -1,6 +1,6 @@
 package com.winx.crawler.target;
 
-import com.winx.model.Proxy;
+import com.winx.model.ProxyIp;
 
 import java.util.List;
 
@@ -20,5 +20,5 @@ public interface TargetWebGetter {
      */
     boolean shouldVisit(String url);
 
-    List<Proxy> FromPage(String pageHtml);
+    List<ProxyIp> FromPage(String pageHtml);
 }

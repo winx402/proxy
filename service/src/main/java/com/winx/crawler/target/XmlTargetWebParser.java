@@ -39,7 +39,7 @@ public class XmlTargetWebParser {
     private String xml_path;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         URLClassLoader loader = (URLClassLoader) XmlTargetWebParser.class.getClassLoader();
         URL resource = loader.getResource(xml_path);
         if (resource != null)
@@ -67,7 +67,7 @@ public class XmlTargetWebParser {
         }
     }
 
-    private TableXmlTarget parsing(Element element) throws ProcessException{
+    private TableXmlTarget parsing(Element element) throws ProcessException {
         TableXmlTarget tableXmlTarget = new TableXmlTarget();
         for (ElementReader<Element, TableXmlTarget> elementReader : readers) {
             boolean readSuccess = elementReader.read(element, tableXmlTarget);
@@ -142,7 +142,7 @@ public class XmlTargetWebParser {
     private class PortReader implements ElementReader<Element, TableXmlTarget> {
         private static final String PORT = "port";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) {
+        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws ProcessException {
             if (element == null) return false;
             String s = element.elementText(PORT);
             if (Strings.isNullOrEmpty(s)) return false;
