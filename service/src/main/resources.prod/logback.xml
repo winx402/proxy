@@ -24,11 +24,11 @@
     </appender>
 
     <!-- log file error -->
-    <appender name="proxy_error" class="ch.qos.logback.core.FileAppender">
+    <appender name="error" class="ch.qos.logback.core.FileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <file>${log.dir}/proxy_error.log</file>
+        <file>${log.dir}/error.log</file>
         <prudent>false</prudent>
         <Append>true</Append>
         <encoder>
@@ -36,14 +36,14 @@
             <charset>${encoding}</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/proxy_error.log.%d{yyyy-MM-dd}
+            <fileNamePattern>${log.dir}/error.log.%d{yyyy-MM-dd}
             </fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="proxy_error"/>
+        <appender-ref ref="error"/>
         <appender-ref ref="fileDefault"/>
     </root>
 

@@ -1,6 +1,5 @@
 package com.winx.crawler;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSON;
 import com.winx.crawler.target.TargetGetterManage;
 import com.winx.crawler.target.XmlTargetWebParser;
@@ -33,7 +32,7 @@ public class CrawlerController {
     @Resource
     private TargetGetterManage targetGetterManage;
 
-    private static final int numberOfCrawlers = 5;
+    private static final int numberOfCrawlers = 3;
 
     private static CrawlerFactory crawlerFactory;
 
@@ -58,10 +57,9 @@ public class CrawlerController {
 
     /**
      * 执行
-     * 通过ThreadLocal传递TargetWebGetter
      */
     public void doCrawling() {
-        if (!initialized){
+        if (!initialized) {
             logger.info("CrawlerController not initialized");
             return;
         }
@@ -82,17 +80,15 @@ public class CrawlerController {
     }
 
     public class CrawlerFactory {
-        private final CrawlConfig config = new CrawlConfig();
-        private final PageFetcher pageFetcher = new PageFetcher(config);
-        private final RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
         private static final String crawlStorageFolder = "data/crawl/root";
-        private final RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-
-        CrawlerFactory() {
-            config.setCrawlStorageFolder(crawlStorageFolder);
-        }
 
         private CrawlController newCrawlController() throws Exception {
+            CrawlConfig config = new CrawlConfig();
+            config.setCrawlStorageFolder(crawlStorageFolder);
+            config.setPolitenessDelay(1000); //1000毫秒的间隔
+            PageFetcher pageFetcher = new PageFetcher(config);
+            RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
+            RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
             return new CrawlController(config, pageFetcher, robotstxtServer);
         }
     }

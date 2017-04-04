@@ -26,7 +26,7 @@ public class TypeAttributeParser extends AbstractAttributeParser<ProxyType> {
     }
 
     private static class TablePortPattern implements AttributeProcesser<ProxyType> {
-        private static final Pattern typePattern = Pattern.compile("<td>(http|HTTP|https|HTTPS|socket4|SOCKET4|socket5|SOCKET5|socket4/5|SOCKET4/5)</td>");
+        private static final Pattern typePattern = Pattern.compile("<td>(http|HTTP|https|HTTPS|socket4|SOCKET4|socket5|SOCKET5|socks4/5|SOCKS4/5)</td>");
 
         public ProxyType getAttrable(String source) throws ProcessException {
             Matcher matcher = typePattern.matcher(source);
