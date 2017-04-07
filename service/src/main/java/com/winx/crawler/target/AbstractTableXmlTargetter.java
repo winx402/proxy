@@ -3,11 +3,10 @@ package com.winx.crawler.target;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.io.LineProcessor;
+import com.winx.crawler.target.attrable.AbstractAttributeParser;
 import com.winx.crawler.target.attrable.AttributeFacade;
-import com.winx.crawler.target.attrable.AttributeProcesser;
-import com.winx.enums.ExceptionEnum;
-import com.winx.enums.ProxyType;
 import com.winx.enums.ProxyAvailable;
+import com.winx.enums.ProxyType;
 import com.winx.exception.ProcessException;
 import com.winx.model.ProxyIp;
 import org.joda.time.DateTime;
@@ -25,37 +24,37 @@ import java.util.regex.Pattern;
  * @author wangwenxiang
  * @create 2017-03-25.
  */
-public class TableXmlTarget implements TargetWebGetter{
+public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
 
-    private static final Logger logger = LoggerFactory.getLogger(TableXmlTarget.class);
-
-    private static final Pattern trPattern = Pattern.compile("<tr.*?</tr>");
+    private static final Logger logger = LoggerFactory.getLogger(AbstractTableXmlTargetter.class);
 
     private AttributeFacade attributeFacade = new AttributeFacade();
+
+    private static Map<String, AbstractTableXmlTargetter> targetterMap = new HashMap<String, AbstractTableXmlTargetter>(){{
+        this.put("table", new TableXmlTarget());
+        this.put("p",new PXmlTarget());
+    }};
 
     public AttributeFacade getAttributeFacade() {
         return attributeFacade;
     }
 
-    /**
-     * 入口
-     */
-    private List<String> entrances;
-
-    public void setEntrances(String entrance){
+    public void setEntrances(String entrance) {
         setEntrances(Lists.newArrayList(entrance));
     }
 
-    public void setEntrances(List<String> entrances){
+    public void setEntrances(List<String> entrances) {
         this.entrances = entrances;
     }
+
+    private HtmlProcessor htmlProcessor = new HtmlProcessor();
 
     /**
      * 访问页面正则
      */
     private Pattern shouldVisitPattern;
 
-    public void setShouldVisitPattern(String shouldVisitPattern){
+    public void setShouldVisitPattern(String shouldVisitPattern) {
         this.shouldVisitPattern = Pattern.compile(shouldVisitPattern);
     }
 
@@ -72,46 +71,53 @@ public class TableXmlTarget implements TargetWebGetter{
         return getTr(pageHtml);
     }
 
+    protected abstract Pattern getLinePattern();
+
+    /**
+     * 入口
+     */
+    private List<String> entrances;
+
     /**
      * 正则获取ip
      * ip获取失败时抛出异常
      */
-    private String getIp(String trHtml) throws ProcessException{
+    private String getIp(String trHtml) throws ProcessException {
         return attributeFacade.getIp(trHtml);
     }
 
     /**
      * 正则获取端口
      */
-    private int getPort(String trHtml){
+    private int getPort(String trHtml) {
         return attributeFacade.getPort(trHtml);
     }
 
     /**
      * 获取代理类型
      */
-    private ProxyType getType(String trHtml){
+    private ProxyType getType(String trHtml) {
         return attributeFacade.getType(trHtml);
     }
 
 
-    private List<ProxyIp> getTr(final String pageHtml){
-        return HtmlProcessor.html2List(pageHtml, new LineProcessor<List<ProxyIp>>() {
+    private List<ProxyIp> getTr(final String pageHtml) {
+        return htmlProcessor.html2List(pageHtml, new LineProcessor<List<ProxyIp>>() {
 
             List<ProxyIp> proxies = Lists.newArrayList();
 
             public boolean processLine(String line) throws IOException {
-                logger.info("TableXmlTarget process html get tr:{}",line);
+                logger.info("TableXmlTarget process html get tr:{}", line);
                 ProxyIp proxy = new ProxyIp();
-                try{
+                try {
                     proxy.setIp(getIp(line));
                     proxy.setPort(getPort(line));
                     proxy.setProxyType(getType(line));
                     proxy.setAvailable(ProxyAvailable.INITIAL);
                     proxy.setCreateTime(new DateTime().toString("yyyy-MM-dd"));
                     proxies.add(proxy);
-                }catch (Exception e){
-                    logger.error("TableXmlTarget process html error, html : {}",line);
+                } catch (Exception e) {
+                    logger.error("TableXmlTarget process html error, html : {}", line);
                     return false;
                 }
                 return true;
@@ -123,18 +129,41 @@ public class TableXmlTarget implements TargetWebGetter{
         });
     }
 
-    private static class HtmlProcessor{
-        static <T> T html2List(String html, LineProcessor<T> lineProcessor){
+    private class HtmlProcessor {
+        public <T> T html2List(String html, LineProcessor<T> lineProcessor) {
             logger.info("begin to process html through TableXmlTarget， html:{}", html);
-            try{
-                Matcher matcher = trPattern.matcher(html);
-                while (matcher.find()){
+            try {
+                Pattern linePattern = getLinePattern();
+                Matcher matcher = linePattern.matcher(html);
+                while (matcher.find()) {
                     lineProcessor.processLine(matcher.group());
                 }
-            }catch (Exception e){
-                logger.error("html to proxy parse error,html:{},message:{}",html,e.getMessage());
+            } catch (Exception e) {
+                logger.error("html to proxy parse error,html:{},message:{}", html, e.getMessage());
             }
             return lineProcessor.getResult();
+        }
+    }
+
+    public static AbstractTableXmlTargetter newInstance(String type){
+        return targetterMap.get(type);
+    }
+
+    private static class TableXmlTarget extends AbstractTableXmlTargetter {
+        private static final Pattern linePattern = Pattern.compile("<tr.*?</tr>");
+
+        @Override
+        protected Pattern getLinePattern() {
+            return linePattern;
+        }
+    }
+
+    private static class PXmlTarget extends AbstractTableXmlTargetter {
+        private static final Pattern linePattern = Pattern.compile("<p.*?</p>");
+
+        @Override
+        protected Pattern getLinePattern() {
+            return linePattern;
         }
     }
 }

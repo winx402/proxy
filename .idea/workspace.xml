@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9de1224b-44f2-409c-8bc7-8b019da6801a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/classes/com/winx/crawler/CrawlerController.class" afterPath="$PROJECT_DIR$/service/target/classes/com/winx/crawler/CrawlerController.class" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TableXmlTarget.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/AbstractTableXmlTargetter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/task/CrawlerStartTask.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/task/CrawlerStartTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/resources.prod/logback.xml" afterPath="$PROJECT_DIR$/service/src/main/resources.prod/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml" afterPath="$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml" afterPath="$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/classes/target/handmapper.xml" afterPath="$PROJECT_DIR$/service/target/classes/target/handmapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,235 +45,72 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CrawlingController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlingController.java">
+      <file leaf-file-name="XmlTargetWebParser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TypeAttributeParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxy.proxy_ip" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/7bd3cb30/4d741107-61c7-4219-9640-6810e206cd5c/proxy.proxy_ip">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxy.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/sql/proxy.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4d741107-61c7-4219-9640-6810e206cd5c/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+            <state relative-caret-position="143">
+              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="handmapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml">
+        <entry file="file://$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AttributeFacade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeFacade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-285">
+              <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IpAttributeParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/IpAttributeParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractTableXmlTargetter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/AbstractTableXmlTargetter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="57" column="24" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElementReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/ElementReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProxyIp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/model/ProxyIp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrawlerController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="91" column="77" lean-forward="false" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrawlConfig.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3600">
-              <caret line="287" column="14" lean-forward="false" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#5416#5417#0" expanded="false" />
-                <element signature="e#5451#5452#0" expanded="false" />
-                <element signature="e#5754#5755#0" expanded="false" />
-                <element signature="e#5808#5809#0" expanded="false" />
-                <element signature="e#5850#5851#0" expanded="false" />
-                <element signature="e#5884#5885#0" expanded="false" />
-                <element signature="e#6185#6186#0" expanded="false" />
-                <element signature="e#6237#6238#0" expanded="false" />
-                <element signature="e#6277#6278#0" expanded="false" />
-                <element signature="e#6312#6313#0" expanded="false" />
-                <element signature="e#6568#6569#0" expanded="false" />
-                <element signature="e#6622#6623#0" expanded="false" />
-                <element signature="e#6659#6660#0" expanded="false" />
-                <element signature="e#6691#6692#0" expanded="false" />
-                <element signature="e#6949#6950#0" expanded="false" />
-                <element signature="e#6997#6998#0" expanded="false" />
-                <element signature="e#7083#7084#0" expanded="false" />
-                <element signature="e#7115#7116#0" expanded="false" />
-                <element signature="e#7428#7429#0" expanded="false" />
-                <element signature="e#7476#7477#0" expanded="false" />
-                <element signature="e#7597#7598#0" expanded="false" />
-                <element signature="e#7643#7644#0" expanded="false" />
-                <element signature="e#8088#8089#0" expanded="false" />
-                <element signature="e#8120#8121#0" expanded="false" />
-                <element signature="e#8363#8364#0" expanded="false" />
-                <element signature="e#8411#8412#0" expanded="false" />
-                <element signature="e#8453#8454#0" expanded="false" />
-                <element signature="e#8487#8488#0" expanded="false" />
-                <element signature="e#8623#8624#0" expanded="false" />
-                <element signature="e#8675#8676#0" expanded="false" />
-                <element signature="e#8730#8731#0" expanded="false" />
-                <element signature="e#8777#8778#0" expanded="false" />
-                <element signature="e#9122#9123#0" expanded="false" />
-                <element signature="e#9169#9170#0" expanded="false" />
-                <element signature="e#9472#9473#0" expanded="false" />
-                <element signature="e#9510#9511#0" expanded="false" />
-                <element signature="e#9755#9756#0" expanded="false" />
-                <element signature="e#9791#9792#0" expanded="false" />
-                <element signature="e#9926#9927#0" expanded="false" />
-                <element signature="e#9982#9983#0" expanded="false" />
-                <element signature="e#10017#10018#0" expanded="false" />
-                <element signature="e#10047#10048#0" expanded="false" />
-                <element signature="e#10169#10170#0" expanded="false" />
-                <element signature="e#10213#10214#0" expanded="false" />
-                <element signature="e#10252#10253#0" expanded="false" />
-                <element signature="e#10286#10287#0" expanded="false" />
-                <element signature="e#10424#10425#0" expanded="false" />
-                <element signature="e#10476#10477#0" expanded="false" />
-                <element signature="e#10522#10523#0" expanded="false" />
-                <element signature="e#10563#10564#0" expanded="false" />
-                <element signature="e#10851#10852#0" expanded="false" />
-                <element signature="e#10883#10884#0" expanded="false" />
-                <element signature="e#11057#11058#0" expanded="false" />
-                <element signature="e#11105#11106#0" expanded="false" />
-                <element signature="e#11145#11146#0" expanded="false" />
-                <element signature="e#11177#11178#0" expanded="false" />
-                <element signature="e#11306#11307#0" expanded="false" />
-                <element signature="e#11354#11355#0" expanded="false" />
-                <element signature="e#11401#11402#0" expanded="false" />
-                <element signature="e#11440#11441#0" expanded="false" />
-                <element signature="e#11575#11576#0" expanded="false" />
-                <element signature="e#11618#11619#0" expanded="false" />
-                <element signature="e#11662#11663#0" expanded="false" />
-                <element signature="e#11698#11699#0" expanded="false" />
-                <element signature="e#11994#11995#0" expanded="false" />
-                <element signature="e#12032#12033#0" expanded="false" />
-                <element signature="e#12066#12067#0" expanded="false" />
-                <element signature="e#12092#12093#0" expanded="false" />
-                <element signature="e#12270#12271#0" expanded="false" />
-                <element signature="e#12306#12307#0" expanded="false" />
-                <element signature="e#12337#12338#0" expanded="false" />
-                <element signature="e#12363#12364#0" expanded="false" />
-                <element signature="e#12538#12539#0" expanded="false" />
-                <element signature="e#12574#12575#0" expanded="false" />
-                <element signature="e#12612#12613#0" expanded="false" />
-                <element signature="e#12642#12643#0" expanded="false" />
-                <element signature="e#12906#12907#0" expanded="false" />
-                <element signature="e#12950#12951#0" expanded="false" />
-                <element signature="e#12988#12989#0" expanded="false" />
-                <element signature="e#13018#13019#0" expanded="false" />
-                <element signature="e#13289#13290#0" expanded="false" />
-                <element signature="e#13333#13334#0" expanded="false" />
-                <element signature="e#13432#13433#0" expanded="false" />
-                <element signature="e#13458#13459#0" expanded="false" />
-                <element signature="e#13759#13760#0" expanded="false" />
-                <element signature="e#13795#13796#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TargetGetterManage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TargetGetterManage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#481#482#0" expanded="false" />
-                <element signature="e#531#532#0" expanded="false" />
-                <element signature="e#1466#1467#0" expanded="false" />
-                <element signature="e#1499#1500#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CrawlController.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="86" column="9" lean-forward="false" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#4650#4651#0" expanded="false" />
-                <element signature="e#4676#4677#0" expanded="false" />
-                <element signature="e#12363#12364#0" expanded="false" />
-                <element signature="e#12397#12398#0" expanded="false" />
-                <element signature="e#12816#12817#0" expanded="false" />
-                <element signature="e#12846#12847#0" expanded="false" />
-                <element signature="e#15970#15971#0" expanded="false" />
-                <element signature="e#15998#15999#0" expanded="false" />
-                <element signature="e#16055#16056#0" expanded="false" />
-                <element signature="e#16095#16096#0" expanded="false" />
-                <element signature="e#16144#16145#0" expanded="false" />
-                <element signature="e#16176#16177#0" expanded="false" />
-                <element signature="e#16245#16246#0" expanded="false" />
-                <element signature="e#16293#16294#0" expanded="false" />
-                <element signature="e#16328#16329#0" expanded="false" />
-                <element signature="e#16353#16354#0" expanded="false" />
-                <element signature="e#16401#16402#0" expanded="false" />
-                <element signature="e#16435#16436#0" expanded="false" />
-                <element signature="e#16476#16477#0" expanded="false" />
-                <element signature="e#16504#16505#0" expanded="false" />
-                <element signature="e#16561#16562#0" expanded="false" />
-                <element signature="e#16601#16602#0" expanded="false" />
-                <element signature="e#16636#16637#0" expanded="false" />
-                <element signature="e#16663#16664#0" expanded="false" />
-                <element signature="e#16713#16714#0" expanded="false" />
-                <element signature="e#16751#16752#0" expanded="false" />
-                <element signature="e#16784#16785#0" expanded="false" />
-                <element signature="e#16814#16815#0" expanded="false" />
-                <element signature="e#16851#16852#0" expanded="false" />
-                <element signature="e#16880#16881#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -309,6 +146,7 @@
       <find>isShutDown</find>
       <find>socks4/5</find>
       <find>error</find>
+      <find>tab</find>
     </findStrings>
     <replaceStrings>
       <replace>proxy</replace>
@@ -326,8 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/util/SpringUtil.java" />
-        <option value="$PROJECT_DIR$/service/src/main/resources/appServlet-context.xml" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/listener/CrawlerListener.java" />
         <option value="$PROJECT_DIR$/service/target/classes/target/handmapper.xml" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/XmlTargetWebParser.java" />
@@ -362,9 +198,6 @@
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeFacade.java" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AbstractAttributeParser.java" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/ElementReader.java" />
-        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java" />
-        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TableXmlTarget.java" />
-        <option value="$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml" />
         <option value="$PROJECT_DIR$/service/src/main/resources/mapper/proxyIp.xml" />
         <option value="$PROJECT_DIR$/service/pom.xml" />
         <option value="$PROJECT_DIR$/service/sql/proxy.sql" />
@@ -372,11 +205,16 @@
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/CrawlerController.java" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlerController.java" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlingController.java" />
-        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java" />
         <option value="$PROJECT_DIR$/service/src/main/resources.prod/logback.xml" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java" />
-        <option value="$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4d741107-61c7-4219-9640-6810e206cd5c/console.sql" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TableXmlTarget.java" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/util/HtmlProcessor.java" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/AbstractTableXmlTargetter.java" />
+        <option value="$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml" />
+        <option value="$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java" />
+        <option value="$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml" />
       </list>
     </option>
   </component>
@@ -404,6 +242,11 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="test" />
+      </list>
+    </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
@@ -429,6 +272,16 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Lifecycle" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Profiles" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProfilesNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -481,6 +334,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -570,7 +424,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources.dev" />
+              <option name="myItemId" value="resources.test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -596,7 +450,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="winx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -661,6 +523,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="winx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -699,48 +599,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="winx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="attrable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -799,7 +657,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -819,8 +676,22 @@
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/service/sql" />
+      <recent name="$PROJECT_DIR$/service/src/main/resources.test" />
+      <recent name="$PROJECT_DIR$/service/src/main/resources.dev" />
+      <recent name="$PROJECT_DIR$/service/src/main/resources/target" />
+      <recent name="$PROJECT_DIR$/service/src/main/resources/mapper" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.winx.crawler.target" />
+      <recent name="com.winx.crawler.target.attrable" />
+      <recent name="com.winx.typehandler" />
+      <recent name="com.winx.dao" />
+      <recent name="com.winx.enums" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/service/src/main/resources/mybatis" />
@@ -828,19 +699,6 @@
       <recent name="$PROJECT_DIR$/service/src/main" />
       <recent name="$PROJECT_DIR$/service/src/test/resources" />
       <recent name="$PROJECT_DIR$/service/src/main/resources.prod" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.winx.crawler.target.attrable" />
-      <recent name="com.winx.typehandler" />
-      <recent name="com.winx.dao" />
-      <recent name="com.winx.enums" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/service/sql" />
-      <recent name="$PROJECT_DIR$/service/src/main/resources.test" />
-      <recent name="$PROJECT_DIR$/service/src/main/resources.dev" />
-      <recent name="$PROJECT_DIR$/service/src/main/resources/target" />
-      <recent name="$PROJECT_DIR$/service/src/main/resources/mapper" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TargetWebTest.test">
@@ -1194,29 +1052,13 @@
       <workItem from="1490703382930" duration="8134000" />
       <workItem from="1490764897482" duration="2871000" />
       <workItem from="1490771167614" duration="4392000" />
-      <workItem from="1491295012336" duration="319000" />
+      <workItem from="1491295012336" duration="2154000" />
+      <workItem from="1491460247317" duration="1460000" />
+      <workItem from="1491545540535" duration="2223000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 15h 30m 42s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 15h 33m 27s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 16h 29m 31s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 17h 30m 30s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 23h 02m 44s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TargetWebTest_test - 2017.03.28 at 23h 04m 19s.xml">
-      <configuration name="TargetWebTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TargetWebTest_test - 2017.03.28 at 23h 04m 32s.xml">
       <configuration name="TargetWebTest.test" configurationId="JUnit" />
     </history-entry>
@@ -1229,9 +1071,27 @@
     <history-entry file="TargetWebTest_test - 2017.04.04 at 16h 38m 20s.xml">
       <configuration name="TargetWebTest.test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.04 at 16h 44m 07s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.07 at 14h 40m 02s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.07 at 14h 41m 06s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.07 at 14h 41m 38s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.07 at 14h 41m 48s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TargetWebTest_test - 2017.04.07 at 14h 42m 57s.xml">
+      <configuration name="TargetWebTest.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98432000" />
+    <option name="totallyTimeSpent" value="103950000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1244,7 +1104,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1255,23 +1115,50 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4260274" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3479452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4479452" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20547946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31987077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35056543" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27059773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59178084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.75479454" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3109589" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4479452" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34657535" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3457189" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27059773" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59178084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4260274" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20547946" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4479452" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33441034" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3109589" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -1281,7 +1168,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="31" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1290,34 +1177,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/service/TestService.java" />
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/dao/ProxyIpDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/typehandler/ProxyTypeHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/resources/mybatis/db.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding>
-            <element signature="e#445#459#0" expanded="false" />
-            <element signature="e#502#521#0" expanded="false" />
-            <element signature="e#564#583#0" expanded="false" />
-            <element signature="e#633#650#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1368,38 +1227,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeProcesser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/enums/ExceptionEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/ElementReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/IpAttributeParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -1417,13 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TableXmlTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="134" column="80" lean-forward="false" selection-start-line="134" selection-start-column="80" selection-end-line="134" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/PortAttributeParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1438,13 +1262,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/resources/mapper/proxyIp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1456,13 +1273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1573,195 +1383,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/Crawler.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4d741107-61c7-4219-9640-6810e206cd5c/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="165">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlController.java">
+    <entry file="file://$PROJECT_DIR$/service/sql/proxy.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="86" column="9" lean-forward="false" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4650#4651#0" expanded="false" />
-            <element signature="e#4676#4677#0" expanded="false" />
-            <element signature="e#12363#12364#0" expanded="false" />
-            <element signature="e#12397#12398#0" expanded="false" />
-            <element signature="e#12816#12817#0" expanded="false" />
-            <element signature="e#12846#12847#0" expanded="false" />
-            <element signature="e#15970#15971#0" expanded="false" />
-            <element signature="e#15998#15999#0" expanded="false" />
-            <element signature="e#16055#16056#0" expanded="false" />
-            <element signature="e#16095#16096#0" expanded="false" />
-            <element signature="e#16144#16145#0" expanded="false" />
-            <element signature="e#16176#16177#0" expanded="false" />
-            <element signature="e#16245#16246#0" expanded="false" />
-            <element signature="e#16293#16294#0" expanded="false" />
-            <element signature="e#16328#16329#0" expanded="false" />
-            <element signature="e#16353#16354#0" expanded="false" />
-            <element signature="e#16401#16402#0" expanded="false" />
-            <element signature="e#16435#16436#0" expanded="false" />
-            <element signature="e#16476#16477#0" expanded="false" />
-            <element signature="e#16504#16505#0" expanded="false" />
-            <element signature="e#16561#16562#0" expanded="false" />
-            <element signature="e#16601#16602#0" expanded="false" />
-            <element signature="e#16636#16637#0" expanded="false" />
-            <element signature="e#16663#16664#0" expanded="false" />
-            <element signature="e#16713#16714#0" expanded="false" />
-            <element signature="e#16751#16752#0" expanded="false" />
-            <element signature="e#16784#16785#0" expanded="false" />
-            <element signature="e#16814#16815#0" expanded="false" />
-            <element signature="e#16851#16852#0" expanded="false" />
-            <element signature="e#16880#16881#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TargetGetterManage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#481#482#0" expanded="false" />
-            <element signature="e#531#532#0" expanded="false" />
-            <element signature="e#1466#1467#0" expanded="false" />
-            <element signature="e#1499#1500#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3600">
-          <caret line="287" column="14" lean-forward="false" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#5416#5417#0" expanded="false" />
-            <element signature="e#5451#5452#0" expanded="false" />
-            <element signature="e#5754#5755#0" expanded="false" />
-            <element signature="e#5808#5809#0" expanded="false" />
-            <element signature="e#5850#5851#0" expanded="false" />
-            <element signature="e#5884#5885#0" expanded="false" />
-            <element signature="e#6185#6186#0" expanded="false" />
-            <element signature="e#6237#6238#0" expanded="false" />
-            <element signature="e#6277#6278#0" expanded="false" />
-            <element signature="e#6312#6313#0" expanded="false" />
-            <element signature="e#6568#6569#0" expanded="false" />
-            <element signature="e#6622#6623#0" expanded="false" />
-            <element signature="e#6659#6660#0" expanded="false" />
-            <element signature="e#6691#6692#0" expanded="false" />
-            <element signature="e#6949#6950#0" expanded="false" />
-            <element signature="e#6997#6998#0" expanded="false" />
-            <element signature="e#7083#7084#0" expanded="false" />
-            <element signature="e#7115#7116#0" expanded="false" />
-            <element signature="e#7428#7429#0" expanded="false" />
-            <element signature="e#7476#7477#0" expanded="false" />
-            <element signature="e#7597#7598#0" expanded="false" />
-            <element signature="e#7643#7644#0" expanded="false" />
-            <element signature="e#8088#8089#0" expanded="false" />
-            <element signature="e#8120#8121#0" expanded="false" />
-            <element signature="e#8363#8364#0" expanded="false" />
-            <element signature="e#8411#8412#0" expanded="false" />
-            <element signature="e#8453#8454#0" expanded="false" />
-            <element signature="e#8487#8488#0" expanded="false" />
-            <element signature="e#8623#8624#0" expanded="false" />
-            <element signature="e#8675#8676#0" expanded="false" />
-            <element signature="e#8730#8731#0" expanded="false" />
-            <element signature="e#8777#8778#0" expanded="false" />
-            <element signature="e#9122#9123#0" expanded="false" />
-            <element signature="e#9169#9170#0" expanded="false" />
-            <element signature="e#9472#9473#0" expanded="false" />
-            <element signature="e#9510#9511#0" expanded="false" />
-            <element signature="e#9755#9756#0" expanded="false" />
-            <element signature="e#9791#9792#0" expanded="false" />
-            <element signature="e#9926#9927#0" expanded="false" />
-            <element signature="e#9982#9983#0" expanded="false" />
-            <element signature="e#10017#10018#0" expanded="false" />
-            <element signature="e#10047#10048#0" expanded="false" />
-            <element signature="e#10169#10170#0" expanded="false" />
-            <element signature="e#10213#10214#0" expanded="false" />
-            <element signature="e#10252#10253#0" expanded="false" />
-            <element signature="e#10286#10287#0" expanded="false" />
-            <element signature="e#10424#10425#0" expanded="false" />
-            <element signature="e#10476#10477#0" expanded="false" />
-            <element signature="e#10522#10523#0" expanded="false" />
-            <element signature="e#10563#10564#0" expanded="false" />
-            <element signature="e#10851#10852#0" expanded="false" />
-            <element signature="e#10883#10884#0" expanded="false" />
-            <element signature="e#11057#11058#0" expanded="false" />
-            <element signature="e#11105#11106#0" expanded="false" />
-            <element signature="e#11145#11146#0" expanded="false" />
-            <element signature="e#11177#11178#0" expanded="false" />
-            <element signature="e#11306#11307#0" expanded="false" />
-            <element signature="e#11354#11355#0" expanded="false" />
-            <element signature="e#11401#11402#0" expanded="false" />
-            <element signature="e#11440#11441#0" expanded="false" />
-            <element signature="e#11575#11576#0" expanded="false" />
-            <element signature="e#11618#11619#0" expanded="false" />
-            <element signature="e#11662#11663#0" expanded="false" />
-            <element signature="e#11698#11699#0" expanded="false" />
-            <element signature="e#11994#11995#0" expanded="false" />
-            <element signature="e#12032#12033#0" expanded="false" />
-            <element signature="e#12066#12067#0" expanded="false" />
-            <element signature="e#12092#12093#0" expanded="false" />
-            <element signature="e#12270#12271#0" expanded="false" />
-            <element signature="e#12306#12307#0" expanded="false" />
-            <element signature="e#12337#12338#0" expanded="false" />
-            <element signature="e#12363#12364#0" expanded="false" />
-            <element signature="e#12538#12539#0" expanded="false" />
-            <element signature="e#12574#12575#0" expanded="false" />
-            <element signature="e#12612#12613#0" expanded="false" />
-            <element signature="e#12642#12643#0" expanded="false" />
-            <element signature="e#12906#12907#0" expanded="false" />
-            <element signature="e#12950#12951#0" expanded="false" />
-            <element signature="e#12988#12989#0" expanded="false" />
-            <element signature="e#13018#13019#0" expanded="false" />
-            <element signature="e#13289#13290#0" expanded="false" />
-            <element signature="e#13333#13334#0" expanded="false" />
-            <element signature="e#13432#13433#0" expanded="false" />
-            <element signature="e#13458#13459#0" expanded="false" />
-            <element signature="e#13759#13760#0" expanded="false" />
-            <element signature="e#13795#13796#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="91" column="77" lean-forward="false" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -1774,22 +1406,164 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/controller/CrawlingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/sql/proxy.sql">
+    <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="72" />
+        <state relative-caret-position="156">
+          <caret line="287" column="14" lean-forward="false" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.2/crawler4j-4.2-sources.jar!/edu/uci/ics/crawler4j/crawler/CrawlController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="86" column="9" lean-forward="false" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/TypeAttributeParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4d741107-61c7-4219-9640-6810e206cd5c/console.sql">
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeProcesser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/CrawlerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="47" column="36" lean-forward="false" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/Crawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="40" column="30" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TargetGetterManage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#481#482#0" expanded="false" />
+            <element signature="e#531#532#0" expanded="false" />
+            <element signature="e#1466#1467#0" expanded="false" />
+            <element signature="e#1499#1500#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TargetWebGetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/util/HtmlProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="86" lean-forward="false" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/model/ProxyIp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/TableXmlTarget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/resources/target/handmapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/ElementReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/AbstractTableXmlTargetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="57" column="24" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/IpAttributeParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/attrable/AttributeFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/resources.test/handmapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/winx/crawler/target/XmlTargetWebParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding />
         </state>
       </provider>

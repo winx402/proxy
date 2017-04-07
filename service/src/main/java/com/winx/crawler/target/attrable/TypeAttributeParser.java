@@ -21,11 +21,11 @@ public class TypeAttributeParser extends AbstractAttributeParser<ProxyType> {
 
     protected TypeAttributeParser() {
         super(new HashMap<String, AttributeProcesser<ProxyType>>() {{
-            this.put(TABLE_TYPE_PATTERN, new TablePortPattern());
+            this.put(TABLE_TYPE_PATTERN, new TableTypePattern());
         }});
     }
 
-    private static class TablePortPattern implements AttributeProcesser<ProxyType> {
+    private static class TableTypePattern implements AttributeProcesser<ProxyType> {
         private static final Pattern typePattern = Pattern.compile("<td>(http|HTTP|https|HTTPS|socket4|SOCKET4|socket5|SOCKET5|socks4/5|SOCKS4/5)</td>");
 
         public ProxyType getAttrable(String source) throws ProcessException {
@@ -35,14 +35,6 @@ public class TypeAttributeParser extends AbstractAttributeParser<ProxyType> {
             }
             logger.error("this type not parser success,{}", source);
             return ProxyType.NONE;
-        }
-    }
-
-    public static void main(String[] args) {
-        Pattern typePattern = Pattern.compile("<td>(http|HTTP|https|HTTPS|socket4|SOCKET4|socket5|SOCKET5|socket4/5|SOCKET4/5)</td>");
-        Matcher http = typePattern.matcher("HTTP");
-        if (http.find()){
-            System.out.println(http.group());
         }
     }
 }

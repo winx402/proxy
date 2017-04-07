@@ -28,7 +28,7 @@ public class XmlTargetWebParser {
 
     private static final Logger logger = LoggerFactory.getLogger(XmlTargetWebParser.class);
 
-    private List<ElementReader<Element, TableXmlTarget>> readers = new ArrayList<ElementReader<Element, TableXmlTarget>>() {{
+    private List<ElementReader<Element, AbstractTableXmlTargetter>> readers = new ArrayList<ElementReader<Element, AbstractTableXmlTargetter>>() {{
         add(new EntranceReader());
         add(new ShouldVisitReader());
         add(new IpReader());
@@ -58,7 +58,7 @@ public class XmlTargetWebParser {
             Iterator it = root.elementIterator();
             while (it.hasNext()) {
                 Element element = (Element) it.next();
-                TableXmlTarget parsing = parsing(element);
+                AbstractTableXmlTargetter parsing = parsing(element);
                 if (parsing != null) {
                     abstractTargetWebs.add(parsing);
                 }
@@ -68,9 +68,9 @@ public class XmlTargetWebParser {
         }
     }
 
-    private TableXmlTarget parsing(Element element) throws Exception {
-        TableXmlTarget tableXmlTarget = new TableXmlTarget();
-        for (ElementReader<Element, TableXmlTarget> elementReader : readers) {
+    private AbstractTableXmlTargetter parsing(Element element) throws Exception {
+        AbstractTableXmlTargetter tableXmlTarget = parserGetter(element);
+        for (ElementReader<Element, AbstractTableXmlTargetter> elementReader : readers) {
             boolean readSuccess = elementReader.read(element, tableXmlTarget);
             if (!readSuccess) {
                 logger.warn("parsing element fail,", elementReader.getInfo());
@@ -80,13 +80,18 @@ public class XmlTargetWebParser {
         return tableXmlTarget;
     }
 
+    private AbstractTableXmlTargetter parserGetter(Element element){
+        String lineType = element.elementText("lineType");
+        return AbstractTableXmlTargetter.newInstance(lineType);
+    }
+
     /**
      * xml获取入口地址
      */
-    private class EntranceReader implements ElementReader<Element, TableXmlTarget> {
+    private class EntranceReader implements ElementReader<Element, AbstractTableXmlTargetter> {
         private static final String ENTRANCE = "entrance";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) {
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) {
             if (element == null) return false;
             String s = element.elementText(ENTRANCE);
             if (Strings.isNullOrEmpty(s)) return false;
@@ -102,10 +107,10 @@ public class XmlTargetWebParser {
     /**
      * xml是否访问解析
      */
-    private class ShouldVisitReader implements ElementReader<Element, TableXmlTarget> {
+    private class ShouldVisitReader implements ElementReader<Element, AbstractTableXmlTargetter> {
         private static final String SHOULDVISIT = "shouldvisit";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) {
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) {
             if (element == null) return false;
             String s = element.elementText(SHOULDVISIT);
             if (Strings.isNullOrEmpty(s)) return false;
@@ -121,10 +126,10 @@ public class XmlTargetWebParser {
     /**
      * ip解析
      */
-    private class IpReader implements ElementReader<Element, TableXmlTarget> {
+    private class IpReader implements ElementReader<Element, AbstractTableXmlTargetter> {
         private static final String IP = "ip";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (element == null) return false;
             String s = element.elementText(IP);
             if (Strings.isNullOrEmpty(s)) return false;
@@ -140,10 +145,10 @@ public class XmlTargetWebParser {
     /**
      * port解析
      */
-    private class PortReader implements ElementReader<Element, TableXmlTarget> {
+    private class PortReader implements ElementReader<Element, AbstractTableXmlTargetter> {
         private static final String PORT = "port";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (element == null) return true;
             String s = element.elementText(PORT);
             tableXmlTarget.getAttributeFacade().setPortProcesser(s);
@@ -155,11 +160,11 @@ public class XmlTargetWebParser {
         }
     }
 
-    private class TypeReader implements ElementReader<Element, TableXmlTarget> {
+    private class TypeReader implements ElementReader<Element, AbstractTableXmlTargetter> {
 
         private static final String TYPE = "type";
 
-        public boolean read(Element element, TableXmlTarget tableXmlTarget) throws Exception {
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (element == null) return true;
             String s = element.elementText(TYPE);
             tableXmlTarget.getAttributeFacade().setTypeProcesser(s);

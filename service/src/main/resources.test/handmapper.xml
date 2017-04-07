@@ -3,6 +3,7 @@
     <target>
         <entrance>http://www.xicidaili.com/nn/1</entrance>
         <shouldvisit>^http://www.xicidaili.com/nn/1$</shouldvisit>
+        <lineType>table</lineType>
         <ip>tableIpPattern</ip>
         <port>tablePortPattern</port>
         <type>tableTypePattern</type>
