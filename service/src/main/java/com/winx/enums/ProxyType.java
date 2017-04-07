@@ -6,7 +6,7 @@ package com.winx.enums;
  * 代理类型
  */
 public enum ProxyType {
-    NONE(0), HTTP(1), HTTPS(2), SOCKET(3), SOCKET4(4), SOCKET5(5);
+    NONE(0), HTTP(1), HTTPS(2), SOCKS(3), SOCKS4(4), SOCKS5(5);
 
     private int code;
 
@@ -33,6 +33,6 @@ public enum ProxyType {
                 return proxyType;
             }
         }
-        return "socket4/5".equalsIgnoreCase(type) ? SOCKET : NONE;
+        return "socks4/5".equalsIgnoreCase(type) ? SOCKS : NONE;
     }
 }

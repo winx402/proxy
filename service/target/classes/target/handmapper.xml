@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapers>
     <target>
-        <website>http://www.xicidaili.com</website>
-        <entrance>http://www.xicidaili.com/nn/1</entrance>
-        <shouldvisit>^http://www.xicidaili.com/nn/\d{1,}$</shouldvisit>
+        <web>http://www.xicidaili.com</web>
+        <entrance>http://www.xicidaili.com</entrance>
+        <shouldvisit>^http://www.xicidaili.com/(nn|nt|wn|wt)/\d{0,}$</shouldvisit>
         <lineType>table</lineType>
         <ip>tableIpPattern</ip>
         <port>tablePortPattern</port>

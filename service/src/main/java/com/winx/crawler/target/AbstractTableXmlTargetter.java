@@ -28,6 +28,9 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractTableXmlTargetter.class);
 
+    /**
+     * ip、port、type的门面类
+     */
     private AttributeFacade attributeFacade = new AttributeFacade();
 
     private static Map<String, AbstractTableXmlTargetter> targetterMap = new HashMap<String, AbstractTableXmlTargetter>(){{
@@ -44,7 +47,11 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
     }
 
     public void setEntrances(List<String> entrances) {
-        this.entrances = entrances;
+        List<Pattern> patterns = Lists.newArrayList();
+        for (String en : entrances){
+            patterns.add(Pattern.compile(en));
+        }
+        this.entrances = patterns;
     }
 
     private HtmlProcessor htmlProcessor = new HtmlProcessor();
@@ -58,12 +65,42 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
         this.shouldVisitPattern = Pattern.compile(shouldVisitPattern);
     }
 
-    public List<String> entrances() {
+    /**
+     * 入口
+     */
+    private List<Pattern> entrances;
+
+    private String web;
+
+    public List<Pattern> entrances() {
         return entrances;
     }
 
+    public String getWeb(){
+        return web;
+    }
+
+    public void setWeb(String web){
+        this.web = web;
+    }
+
+    /**
+     * 是否访问并爬取
+     */
     public boolean shouldVisit(String url) {
         return shouldVisitPattern.matcher(url).matches();
+    }
+
+    /**
+     * 是否访问
+     */
+    public boolean shouldEntrance(String url){
+        for (Pattern pattern: entrances){
+            if (pattern.matcher(url).matches()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<ProxyIp> FromPage(String pageHtml) {
@@ -72,11 +109,6 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
     }
 
     protected abstract Pattern getLinePattern();
-
-    /**
-     * 入口
-     */
-    private List<String> entrances;
 
     /**
      * 正则获取ip

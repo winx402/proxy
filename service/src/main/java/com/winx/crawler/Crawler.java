@@ -12,6 +12,7 @@ import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -35,7 +36,7 @@ public class Crawler extends WebCrawler {
 
     @Override
     public void visit(Page page) {
-        String url = page.getWebURL().getURL();
+        String url = page.getWebURL().getURL().toLowerCase();
         TargetWebGetter targetWenGetter = targetGetterManage.getTargetFromUrl(url);
         if (targetWenGetter == null) return;
         logger.info("visit url:{}", url);
@@ -44,8 +45,9 @@ public class Crawler extends WebCrawler {
             String html = htmlParseData.getHtml().replaceAll("\\n", ""); // 获取页面Html
             List<ProxyIp> proxies = targetWenGetter.FromPage(html);
             logger.info("get Proxies from {} , Proxies are : {}", url, JSON.toJSONString(proxies));
-            proxyIpDao.insert(proxies);
-            //todo proxie 持久化
+            if (!CollectionUtils.isEmpty(proxies)){
+                proxyIpDao.insert(proxies);
+            }
         } else {
             logger.warn("this page have no html, page url : {}", url);
         }

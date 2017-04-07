@@ -1,14 +1,17 @@
 package com.winx.crawler.target;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.winx.exception.ProcessException;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.dom4j.tree.DefaultElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -29,6 +32,7 @@ public class XmlTargetWebParser {
     private static final Logger logger = LoggerFactory.getLogger(XmlTargetWebParser.class);
 
     private List<ElementReader<Element, AbstractTableXmlTargetter>> readers = new ArrayList<ElementReader<Element, AbstractTableXmlTargetter>>() {{
+        add(new WebReader());
         add(new EntranceReader());
         add(new ShouldVisitReader());
         add(new IpReader());
@@ -86,16 +90,41 @@ public class XmlTargetWebParser {
     }
 
     /**
-     * xml获取入口地址
+     * xml是否访问解析
+     */
+    private class WebReader implements ElementReader<Element, AbstractTableXmlTargetter> {
+        private static final String WEB = "web";
+
+        public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) {
+            if (element == null) return false;
+            String s = element.elementText(WEB);
+            if (Strings.isNullOrEmpty(s)) return false;
+            tableXmlTarget.setWeb(s);
+            return true;
+        }
+
+        public String getInfo() {
+            return "xml是否访问解析";
+        }
+    }
+
+    /**
+     * xml获取入口
      */
     private class EntranceReader implements ElementReader<Element, AbstractTableXmlTargetter> {
         private static final String ENTRANCE = "entrance";
 
         public boolean read(Element element, AbstractTableXmlTargetter tableXmlTarget) {
             if (element == null) return false;
-            String s = element.elementText(ENTRANCE);
-            if (Strings.isNullOrEmpty(s)) return false;
-            tableXmlTarget.setEntrances(s);
+            List list = element.elements(ENTRANCE);
+            if (CollectionUtils.isEmpty(list)) return false;
+            List<String> strings = Lists.newArrayList();
+            for (Object o : list){
+                if (o instanceof DefaultElement){
+                    strings.add(((DefaultElement) o).getText());
+                }
+            }
+            tableXmlTarget.setEntrances(strings);
             return true;
         }
 

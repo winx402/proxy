@@ -22,19 +22,27 @@ public class TargetGetterManage {
         targetWebs = Lists.newLinkedList();
     }
 
+    /**
+     * 是否访问
+     * 爬取或者可以访问的页面都应该进入
+     */
     public boolean shouldVisit(Page referringPage, WebURL url){
         String href = url.getURL().toLowerCase();
         for (TargetWebGetter getter : targetWebs){
-            if (getter.shouldVisit(href)){
+            if (getter.shouldVisit(href) || getter.shouldEntrance(href)){
                 return true;
             }
         }
         return false;
     }
 
+    /**
+     * 是否爬取
+     * 只有爬取页面才能爬取
+     */
     public TargetWebGetter getTargetFromUrl(String url){
         for (TargetWebGetter getter : targetWebs){
-            if (getter.shouldVisit(url) || getter.entrances().contains(url)){
+            if (getter.shouldVisit(url)){
                 return getter;
             }
         }
@@ -45,7 +53,7 @@ public class TargetGetterManage {
         List<String> entrances = Lists.newArrayList();
         if (CollectionUtils.isEmpty(targetWebs)) return entrances;
         for (TargetWebGetter targetWebGetter : targetWebs){
-            entrances.addAll(targetWebGetter.entrances());
+            entrances.add(targetWebGetter.getWeb());
         }
         return entrances;
     }

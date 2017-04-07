@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapers>
     <target>
-        <entrance>http://www.xicidaili.com/nn/1</entrance>
-        <shouldvisit>^http://www.xicidaili.com/nn/1$</shouldvisit>
-        <lineType>table</lineType>
-        <ip>tableIpPattern</ip>
-        <port>tablePortPattern</port>
-        <type>tableTypePattern</type>
+        <web>http://www.youdaili.net/</web>
+        <entrance>http://www.youdaili.net/daili/(http|guonei|qq|socks)/?(list_\d{1,}.html)?</entrance>
+        <shouldvisit>^http://www.youdaili.net/daili/(http|guonei|qq|socks)/\d{1,}.html$</shouldvisit>
+        <lineType>p</lineType>
+        <ip>pIpPattern</ip>
+        <port>pPortPattern</port>
+        <type>pTypePattern</type>
     </target>
 </mapers>

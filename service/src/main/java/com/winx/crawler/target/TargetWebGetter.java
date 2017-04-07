@@ -3,6 +3,7 @@ package com.winx.crawler.target;
 import com.winx.model.ProxyIp;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @author wangwenxiang
@@ -11,14 +12,16 @@ import java.util.List;
  */
 public interface TargetWebGetter {
     /**
-     * 页面入口
+     * 是否访问
      */
-    List<String> entrances();
+    boolean shouldEntrance(String url);
 
     /**
      * 页面链接是否访问判断
      */
     boolean shouldVisit(String url);
+
+    String getWeb();
 
     List<ProxyIp> FromPage(String pageHtml);
 }
