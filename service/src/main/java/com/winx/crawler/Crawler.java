@@ -46,10 +46,18 @@ public class Crawler extends WebCrawler {
             List<ProxyIp> proxies = targetWenGetter.FromPage(html);
             logger.info("get Proxies from {} , Proxies are : {}", url, JSON.toJSONString(proxies));
             if (!CollectionUtils.isEmpty(proxies)){
+                targetGetterManage.putIpNum(url, proxies.size());
                 proxyIpDao.insert(proxies);
             }
         } else {
             logger.warn("this page have no html, page url : {}", url);
         }
+    }
+
+    @Override
+    protected void handlePageStatusCode(WebURL webUrl, int statusCode, String statusDescription) {
+        String url = webUrl.getURL().toLowerCase();
+        targetGetterManage.putStatus(url, statusCode);
+        logger.info("{} status is {}", url, statusCode);
     }
 }

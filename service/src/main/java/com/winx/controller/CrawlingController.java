@@ -1,6 +1,7 @@
 package com.winx.controller;
 
 import com.winx.crawler.CrawlerController;
+import com.winx.crawler.task.CrawlerStartTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -20,14 +21,14 @@ public class CrawlingController {
     private static final Logger log = LoggerFactory.getLogger(CrawlingController.class);
 
     @Resource
-    private CrawlerController crawlerController;
+    private CrawlerStartTask crawlerStartTask;
 
     @RequestMapping("doCrawling")
     @ResponseBody
     public String doCrawlerNow(){
         log.info("start crawling by controller");
         long l = System.currentTimeMillis();
-        crawlerController.doCrawling();
+        crawlerStartTask.startCrawling();
         long l1 = System.currentTimeMillis() - l;
         log.info("crawling complete ,cost time : {}", l1);
         return l1+"";

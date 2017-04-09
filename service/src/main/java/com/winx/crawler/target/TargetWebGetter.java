@@ -11,6 +11,12 @@ import java.util.regex.Pattern;
  * 目标页面获取器
  */
 public interface TargetWebGetter {
+
+    /**
+     * 数据库id
+     */
+    int getId();
+
     /**
      * 是否访问
      */

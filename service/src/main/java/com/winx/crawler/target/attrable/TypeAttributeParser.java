@@ -18,8 +18,8 @@ public class TypeAttributeParser extends AbstractAttributeParser<ProxyType> {
 
     private static final Logger logger = LoggerFactory.getLogger(TypeAttributeParser.class);
 
-    private static final String TABLE_TYPE_PATTERN = "tableTypePattern";
-    private static final String P_TYPE_PATTERN = "pTypePattern";
+    private static final String TABLE_TYPE_PATTERN = "tableType";
+    private static final String P_TYPE_PATTERN = "pType";
 
     protected TypeAttributeParser() {
         super(new HashMap<String, AttributeProcesser<ProxyType>>() {{

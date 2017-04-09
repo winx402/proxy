@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface ProxyIpDao {
     void insert(@Param("proxys") List<ProxyIp> proxys);
+
+    int getIpCount();
 }

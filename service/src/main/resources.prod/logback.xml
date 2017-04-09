@@ -9,7 +9,7 @@
     <property name="plain-pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n"/>
     
     <!-- log file default -->
-    <appender name="fileDefault" class="ch.qos.logback.core.FileAppender">
+    <appender name="fileDefault" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.dir}/proxy.log</file>
         <prudent>false</prudent>
         <Append>true</Append>
@@ -18,13 +18,13 @@
             <charset>${encoding}</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/proxy.log.%d{yyyy-MM-dd-HH}</fileNamePattern>
-            <maxHistory>30</maxHistory>
+            <fileNamePattern>${log.dir}/proxy.log.%d{yyyy-MM-dd-HH}.log.gz</fileNamePattern>
+            <maxHistory>7</maxHistory>
         </rollingPolicy>
     </appender>
 
     <!-- log file error -->
-    <appender name="error" class="ch.qos.logback.core.FileAppender">
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
@@ -36,9 +36,9 @@
             <charset>${encoding}</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/error.log.%d{yyyy-MM-dd}
+            <fileNamePattern>${log.dir}/error.log.%d{yyyy-MM-dd}.log.gz
             </fileNamePattern>
-            <maxHistory>30</maxHistory>
+            <maxHistory>168</maxHistory>
         </rollingPolicy>
     </appender>
 

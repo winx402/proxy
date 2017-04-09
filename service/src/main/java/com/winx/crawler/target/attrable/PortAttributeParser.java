@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
  */
 public class PortAttributeParser extends AbstractAttributeParser<Integer> {
 
-    private static final String TABLE_PORT_PATTERN = "tablePortPattern";
+    private static final String TABLE_PORT_PATTERN = "tablePort";
 
-    private static final String P_PORT_PATTERN = "pPortPattern";
+    private static final String P_PORT_PATTERN = "pPort";
 
     protected PortAttributeParser() {
         super(new HashMap<String, AttributeProcesser<Integer>>() {{

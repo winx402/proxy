@@ -65,6 +65,16 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
         this.shouldVisitPattern = Pattern.compile(shouldVisitPattern);
     }
 
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * 入口
      */

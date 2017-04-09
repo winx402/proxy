@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
  */
 public class IpAttributeParser extends AbstractAttributeParser<String> {
 
-    private static final String TABLE_IP_PATTERN = "tableIpPattern";
+    private static final String TABLE_IP_PATTERN = "tableIp";
 
-    private static final String P_IP_PATTERN = "pIpPattern";
+    private static final String P_IP_PATTERN = "pIp";
 
     protected IpAttributeParser() {
         super(new HashMap<String, AttributeProcesser<String>>() {{

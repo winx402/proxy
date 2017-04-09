@@ -19,4 +19,8 @@
         ON DUPLICATE KEY UPDATE
         ip = VALUES(ip)
     </insert>
+
+    <select id="getIpCount" resultType="int">
+        SELECT count(*) from proxy_ip;
+    </select>
 </mapper>
