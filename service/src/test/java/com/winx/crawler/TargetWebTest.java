@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author wangwenxiang
@@ -24,13 +26,19 @@ public class TargetWebTest extends SpringBase{
     public void test() {
         logger.info("********** start test **********");
         SourceWeb sourceWeb = new SourceWeb();
-        sourceWeb.setWeb("http://www.youdaili.net");
-        sourceWeb.setEntrance("http://www.youdaili.net/daili/(http|guonei|qq|socks|guowai|area)/?");
-        sourceWeb.setShouldVisit("^http://www.youdaili.net/daili/(http|guonei|qq|socks|guowai|area)/\\d{1,}.html$");
-        sourceWeb.setLineType("p");
-        sourceWeb.setIpExpression("pIp");
-        sourceWeb.setPortExpression("pPort");
-        sourceWeb.setTypeExpression("pType");
+        sourceWeb.setWeb("http://www.ip3366.net/free/");
+        sourceWeb.setEntrance("http://www.ip3366.net/free/\\?stype=\\d{1,}");
+        sourceWeb.setShouldVisit("^http://www.ip3366.net/free/\\?((stype|page)=\\d{1,}&)?(page|stype)=\\d{1,}$");
+        sourceWeb.setLineType("table");
+        sourceWeb.setIpExpression("tableIp");
+        sourceWeb.setPortExpression("tablePort");
+        sourceWeb.setTypeExpression("tableType");
         crawlerController.init(Lists.newArrayList(sourceWeb)).doCrawling();
     }
+
+    public static void main(String[] args) {
+        Pattern pattern = Pattern.compile("^http://www.ip3366.net/free/\\?stype=\\d{1,}&page=\\d{1,}$");
+        System.out.println(pattern.matcher("http://www.ip3366.net/free/?stype=3&page=1").matches());
+    }
+
 }

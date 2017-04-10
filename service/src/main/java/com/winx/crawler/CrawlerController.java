@@ -36,6 +36,9 @@ public class CrawlerController {
 
     private static final int numberOfCrawlers = 3;
 
+    @Value("${folder}")
+    private String folder;
+
     private static CrawlerFactory crawlerFactory;
 
     private volatile boolean initialized = false;
@@ -85,12 +88,11 @@ public class CrawlerController {
 
     public class CrawlerFactory {
 
-        @Value("${folder}")
-        private String crawlStorageFolder;
+
 
         private CrawlController newCrawlController() throws Exception {
             CrawlConfig config = new CrawlConfig();
-            config.setCrawlStorageFolder(crawlStorageFolder);
+            config.setCrawlStorageFolder(folder);
             config.setMaxDepthOfCrawling(2); //最大深度
             config.setPolitenessDelay(1000); //1000毫秒的间隔
             PageFetcher pageFetcher = new PageFetcher(config);

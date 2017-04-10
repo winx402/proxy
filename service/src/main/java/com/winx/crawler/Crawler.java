@@ -42,7 +42,7 @@ public class Crawler extends WebCrawler {
         logger.info("visit url:{}", url);
         if (page.getParseData() instanceof HtmlParseData) { // 判断是否是html数据
             HtmlParseData htmlParseData = (HtmlParseData) page.getParseData(); // 强制类型转换，获取html数据对象
-            String html = htmlParseData.getHtml().replaceAll("\\n", ""); // 获取页面Html
+            String html = htmlParseData.getHtml().replaceAll("\\n", "").replaceAll("\\r",""); // 获取页面Html
             List<ProxyIp> proxies = targetWenGetter.FromPage(html);
             logger.info("get Proxies from {} , Proxies are : {}", url, JSON.toJSONString(proxies));
             if (!CollectionUtils.isEmpty(proxies)){

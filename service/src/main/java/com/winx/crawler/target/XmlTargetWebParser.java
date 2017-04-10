@@ -137,8 +137,6 @@ public class XmlTargetWebParser {
      * ip解析
      */
     private class IpReader implements ElementReader<SourceWeb, AbstractTableXmlTargetter> {
-        private static final String IP = "ip";
-
         public boolean read(SourceWeb sourceWeb, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (sourceWeb == null) return false;
             String s = sourceWeb.getIpExpression();
@@ -156,8 +154,6 @@ public class XmlTargetWebParser {
      * port解析
      */
     private class PortReader implements ElementReader<SourceWeb, AbstractTableXmlTargetter> {
-        private static final String PORT = "port";
-
         public boolean read(SourceWeb sourceWeb, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (sourceWeb == null) return true;
             String s = sourceWeb.getPortExpression();
@@ -171,9 +167,6 @@ public class XmlTargetWebParser {
     }
 
     private class TypeReader implements ElementReader<SourceWeb, AbstractTableXmlTargetter> {
-
-        private static final String TYPE = "type";
-
         public boolean read(SourceWeb sourceWeb, AbstractTableXmlTargetter tableXmlTarget) throws Exception {
             if (sourceWeb == null) return true;
             String s = sourceWeb.getTypeExpression();
