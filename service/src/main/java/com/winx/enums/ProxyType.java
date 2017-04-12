@@ -1,12 +1,14 @@
 package com.winx.enums;
 
+import ucar.ma2.ArrayDouble;
+
 /**
  * @author wangwenxiang
  * @create 2017-03-25.
  * 代理类型
  */
 public enum ProxyType {
-    NONE(0), HTTP(1), HTTPS(2), SOCKS(3), SOCKS4(4), SOCKS5(5);
+    NONE(0), HTTP(1), HTTPS(2), SOCKS(3), SOCKS4(4), SOCKS5(5),HTTP_HTTPS(6);
 
     private int code;
 
@@ -33,6 +35,13 @@ public enum ProxyType {
                 return proxyType;
             }
         }
-        return "socks4/5".equalsIgnoreCase(type) ? SOCKS : NONE;
+        if ("socks4/5".equalsIgnoreCase(type)){
+            return SOCKS;
+        }
+        String s = type.toLowerCase();
+        if (s.contains("http") && s.contains("https")){
+            return HTTP_HTTPS;
+        }
+        return NONE;
     }
 }

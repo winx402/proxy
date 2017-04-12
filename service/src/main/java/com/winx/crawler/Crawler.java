@@ -43,6 +43,7 @@ public class Crawler extends WebCrawler {
         if (page.getParseData() instanceof HtmlParseData) { // 判断是否是html数据
             HtmlParseData htmlParseData = (HtmlParseData) page.getParseData(); // 强制类型转换，获取html数据对象
             String html = htmlParseData.getHtml().replaceAll("\\n", "").replaceAll("\\r",""); // 获取页面Html
+            String text = htmlParseData.getText();
             List<ProxyIp> proxies = targetWenGetter.FromPage(html);
             logger.info("get Proxies from {} , Proxies are : {}", url, JSON.toJSONString(proxies));
             if (!CollectionUtils.isEmpty(proxies)){

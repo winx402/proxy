@@ -26,9 +26,9 @@ public class TargetWebTest extends SpringBase{
     public void test() {
         logger.info("********** start test **********");
         SourceWeb sourceWeb = new SourceWeb();
-        sourceWeb.setWeb("http://www.ip3366.net/free/");
-        sourceWeb.setEntrance("http://www.ip3366.net/free/\\?stype=\\d{1,}");
-        sourceWeb.setShouldVisit("^http://www.ip3366.net/free/\\?((stype|page)=\\d{1,}&)?(page|stype)=\\d{1,}$");
+        sourceWeb.setWeb("http://www.goubanjia.com/free/");
+        sourceWeb.setEntrance("http://www.goubanjia.com/free/(gngn|gnpt|gwgn|gwpt)/index.shtml/?");
+        sourceWeb.setShouldVisit("^http://www.goubanjia.com/free((/gngn|/gnpt|/gwgn|/gwpt)?/index(\\d{0,})?.shtml)?$");
         sourceWeb.setLineType("table");
         sourceWeb.setIpExpression("tableIp");
         sourceWeb.setPortExpression("tablePort");
@@ -37,8 +37,18 @@ public class TargetWebTest extends SpringBase{
     }
 
     public static void main(String[] args) {
-        Pattern pattern = Pattern.compile("^http://www.ip3366.net/free/\\?stype=\\d{1,}&page=\\d{1,}$");
-        System.out.println(pattern.matcher("http://www.ip3366.net/free/?stype=3&page=1").matches());
+        Pattern pattern = Pattern.compile("[^0-9.]");
+        Pattern compile = Pattern.compile("style='display: ?none;'>.*?>");
+        Pattern compile1 = Pattern.compile("(.*)class=\"port.*?>(\\d{1,}).*");
+        Matcher matcher = compile.matcher("<td class=\"ip\"><div style='display:inline-block;'></div><p style='display: none;'>18</p><span>18</span><p style='display: none;'>2</p><span>2</span><span style='display:inline-block;'>.</span><p style='display: none;'>4</p><span>4</span><p style='display: none;'>2.</p><span>2.</span><span style='display:inline-block;'>39</span><span style='display:inline-block;'>.</span><span style='display:inline-block;'>20</span><span style='display:inline-block;'>3</span>:<span class=\"port DCBZGI\">8767</span></td>");
+        String all = matcher.replaceAll("");
+//        Matcher matcher1 = pattern.matcher(all);
+//        all = matcher1.replaceAll("");
+        Matcher matcher1 = compile1.matcher(all);
+        if (matcher1.find()){
+            System.out.println("ip:"+pattern.matcher(matcher1.group(1)).replaceAll(""));
+            System.out.println("port:"+ matcher1.group(2));
+        }
     }
 
 }

@@ -19,7 +19,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.dir}/proxy.log.%d{yyyy-MM-dd-HH}.log.gz</fileNamePattern>
-            <maxHistory>7</maxHistory>
+            <maxHistory>168</maxHistory>
         </rollingPolicy>
     </appender>
 
@@ -38,7 +38,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.dir}/error.log.%d{yyyy-MM-dd}.log.gz
             </fileNamePattern>
-            <maxHistory>168</maxHistory>
+            <maxHistory>7</maxHistory>
         </rollingPolicy>
     </appender>
 

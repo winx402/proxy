@@ -18,6 +18,8 @@ public class IpAttributeParser extends AbstractAttributeParser<String> {
 
     private static final String P_IP_PATTERN = "pIp";
 
+    private static final String IP_PORT_IP_PATTERN = "ipPortIp";
+
     protected IpAttributeParser() {
         super(new HashMap<String, AttributeProcesser<String>>() {{
             this.put(TABLE_IP_PATTERN, new TableIpPattern());
@@ -39,6 +41,18 @@ public class IpAttributeParser extends AbstractAttributeParser<String> {
 
     private static class PIpPattern implements AttributeProcesser<String> {
         private static final Pattern ipPattern = Pattern.compile("<p>.*(\\d+\\.\\d+\\.\\d+\\.\\d+).*</p>");
+
+        public String getAttrable(String source) throws ProcessException {
+            Matcher matcher = ipPattern.matcher(source);
+            if (matcher.find()) {
+                return matcher.group(1);
+            }
+            throw new ProcessException(ExceptionEnum.PROCESS_HTML_IP_EXCEPTION);
+        }
+    }
+
+    private static class IpPortIpPattern implements AttributeProcesser<String> {
+        private static final Pattern ipPattern = Pattern.compile("<td>(\\d+\\.\\d+\\.\\d+\\.\\d+)</td>");
 
         public String getAttrable(String source) throws ProcessException {
             Matcher matcher = ipPattern.matcher(source);

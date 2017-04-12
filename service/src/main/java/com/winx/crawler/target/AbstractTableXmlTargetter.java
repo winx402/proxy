@@ -33,11 +33,6 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
      */
     private AttributeFacade attributeFacade = new AttributeFacade();
 
-    private static Map<String, AbstractTableXmlTargetter> targetterMap = new HashMap<String, AbstractTableXmlTargetter>(){{
-        this.put("table", new TableXmlTarget());
-        this.put("p",new PXmlTarget());
-    }};
-
     public AttributeFacade getAttributeFacade() {
         return attributeFacade;
     }
@@ -188,7 +183,9 @@ public abstract class AbstractTableXmlTargetter implements TargetWebGetter {
     }
 
     public static AbstractTableXmlTargetter newInstance(String type){
-        return targetterMap.get(type);
+        if ("table".equalsIgnoreCase(type)) return new TableXmlTarget();
+        if ("p".equalsIgnoreCase(type)) return new PXmlTarget();
+        return null;
     }
 
     private static class TableXmlTarget extends AbstractTableXmlTargetter {

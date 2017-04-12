@@ -49,6 +49,7 @@ public class CrawlerController {
     public CrawlerController init(List<SourceWeb> sourceWebs) {
         logger.info("init CrawlerController with sourceWebs:{}",JSON.toJSONString(sourceWebs));
         try {
+            targetGetterManage.init();
             //将网站配置初始化成可以执行的对象
             xmlTargetWebParser.initTargetWeb(targetGetterManage.getTargetWebs(), sourceWebs);
             crawlerFactory = new CrawlerFactory();
